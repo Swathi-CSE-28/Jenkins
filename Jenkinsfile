@@ -1,12 +1,16 @@
 pipeline {
     agent any
 
+    tools {
+        jdk 'JDK21'
+    }
+
     stages {
 
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                  url:'https://github.com/Swathi-CSE-28/Jenkins.git'
+                    url: 'https://github.com/Swathi-CSE-28/Jenkins.git'
             }
         }
 
@@ -22,15 +26,16 @@ pipeline {
             }
         }
     }
+
     post {
-        success{
-                echo 'Program Executed Successfully'
-            }
-        failure{
-                echo 'Program Execution Failed'
-            }
-        always{
-                echo 'Pipeline Completed'
-              }
+        success {
+            echo 'Program Executed Successfully'
+        }
+        failure {
+            echo 'Program Execution Failed'
+        }
+        always {
+            echo 'Pipeline Completed'
         }
     }
+}
